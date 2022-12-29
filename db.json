@@ -1,0 +1,53 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "Yaban",
+      "author": "Yakup Kadri Karaosmanoğlu",
+      "isbn": "11111111",
+      "categoryId": "1"
+    },
+    {
+      "id": 2,
+      "name": "Yeraltından notlar",
+      "author": "Dostoyevski",
+      "isbn": "11111112",
+      "categoryId": "2"
+    },
+    {
+      "id": 3,
+      "name": "Denemeler",
+      "author": "Montaigne",
+      "isbn": "11111113",
+      "categoryId": "3"
+    },
+    {
+      "id": 1672298428698,
+      "name": "mehmet süm",
+      "author": " alye",
+      "isbn": "",
+      "categoryId": "1"
+    },
+    {
+      "id": 1672298443897,
+      "name": "sare",
+      "author": "sare süm",
+      "isbn": "",
+      "categoryId": "2"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Roman"
+    },
+    {
+      "id": "2",
+      "name": "Hikaye"
+    },
+    {
+      "id": "3",
+      "name": "Deneme"
+    }
+  ]
+}
