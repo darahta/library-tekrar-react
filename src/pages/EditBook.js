@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Modal from "../components/Modal";
 
 const EditBook = (props) => {
    const navigate = useNavigate();
@@ -13,6 +14,7 @@ const EditBook = (props) => {
    const [isbn, setIsbn] = useState("");
    const [category, setCategory] = useState("");
    const [categories, setCategories] = useState(null);
+   const [showModal, setShowModal] = useState(false);
 
    useEffect(() => {
       axios
@@ -35,7 +37,10 @@ const EditBook = (props) => {
 
    const handleSubmit = (event) => {
       event.preventDefault();
+      setShowModal(true);
+   };
 
+   const editBook = () => {
       if (bookName === "" || author === "" || category === "" || isbn === "") {
          alert("boş bırakaalmaz");
          return;
@@ -52,6 +57,7 @@ const EditBook = (props) => {
          .put(`http://localhost:3004/books/${params.bookId}`, updatedBook)
          .then((res) => {
             console.log(res);
+            setShowModal(false);
             navigate("/");
          })
          .cat((err) => console.log("err", err));
@@ -129,6 +135,14 @@ const EditBook = (props) => {
                </div>
             </form>
          </div>
+         {showModal === true && (
+            <Modal
+               tittle="Kitap Güncelleme"
+               aciklama={`${bookName} Kaydetmek için onaylayınız`}
+               onCancel={() => setShowModal(false)}
+               onConfirm={() => editBook()}
+            />
+         )}
       </div>
    );
 };

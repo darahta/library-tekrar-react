@@ -10,6 +10,7 @@ const ListBooks = () => {
    const [didUpdate, setDidUpdate] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [silinecekKitap, setSilinecekKitap] = useState(null);
+   const [silinecekKitapIsmi, setSilinecekKitapIsmi] = useState("");
 
    useEffect(() => {
       axios
@@ -92,6 +93,7 @@ const ListBooks = () => {
                                     // deleteBook(book.id);
                                     setShowModal(true);
                                     setSilinecekKitap(book.id);
+                                    setSilinecekKitapIsmi(book.name);
                                  }}
                               >
                                  Delete
@@ -111,10 +113,10 @@ const ListBooks = () => {
          </table>
          {showModal === true && (
             <Modal
-               aciklama={"Silmek istediğinize emin misiniz"}
-               tittle={"Silme İşlemi"}
-               yapilmasiGerekenIs={() => kitapSil(silinecekKitap)}
-               setShowModal={setShowModal}
+               aciklama={`${silinecekKitapIsmi} silmek istediğinize eminmisiniz`}
+               tittle={silinecekKitapIsmi}
+               onConfirm={() => kitapSil(silinecekKitap)}
+               onCancel={() => setShowModal(false)}
             />
          )}
       </div>

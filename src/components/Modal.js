@@ -1,9 +1,10 @@
 import React from "react";
 
 const Modal = (props) => {
-   const { setShowModal, yapilmasiGerekenIs, tittle, aciklama } = props;
+   const { onCancel, onConfirm, tittle, aciklama } = props;
    return (
       <div
+         onClick={onCancel}
          style={{
             position: "absolute",
             width: "100vw",
@@ -28,13 +29,13 @@ const Modal = (props) => {
             <p className="text-center">{aciklama}</p>
             <div className="d-flex justify-content-center">
                <button
-                  onClick={() => setShowModal(false)}
+                  onClick={onCancel}
                   className="btn btn-sm btn-outline-danger mx-2"
                >
                   Kapat
                </button>
                <button
-                  onClick={yapilmasiGerekenIs}
+                  onClick={onConfirm}
                   className="btn btn-sm btn-outline-primary"
                >
                   Onayla
